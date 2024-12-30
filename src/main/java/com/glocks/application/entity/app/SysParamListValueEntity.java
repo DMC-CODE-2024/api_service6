@@ -16,7 +16,7 @@ public class SysParamListValueEntity {
     private int id;
 
     @Column(name = "created_on")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime createdOn;
 
     @Column(name = "description")
@@ -32,7 +32,7 @@ public class SysParamListValueEntity {
     private int listOrder;
 
     @Column(name = "modified_on")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime modifiedOn;
 
     @Column(name = "tag")

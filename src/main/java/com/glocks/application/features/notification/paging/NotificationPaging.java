@@ -66,12 +66,14 @@ public class NotificationPaging {
 
             Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(direction, orderColumn));
             Page<NotificationEntity> page = notificationRepository.findAll(buildSpecification(notificationEntity).build(), pageable);
-            logger.info("paging API response [" + page + "]");
-            for (NotificationEntity notificationEntityDetail : page.getContent()) {
-                String interpretation = getInterpretationByStateAndTag(String.valueOf(notificationEntityDetail.getStatus()));
-                notificationEntityDetail.setInterp(interpretation);
-            }
 
+  /*          for (NotificationEntity notificationEntityDetail : page.getContent()) {
+                String interpretation = getInterpretationByStateAndTag(String.valueOf(notificationEntityDetail.getStatus()));
+                logger.info("interpretation {}", interpretation);
+                notificationEntityDetail.setInterp(interpretation);
+            }*/
+
+            logger.info("paging API response [" + page + "]");
             return page;
 
         } catch (Exception e) {
@@ -84,6 +86,8 @@ public class NotificationPaging {
         boolean isExist = notificationRepository.existsById(id);
         if (isExist) {
             Optional<NotificationEntity> result = notificationRepository.findById(id);
+            String interpretation = getInterpretationByStateAndTag(String.valueOf(result.get().getStatus()));
+            result.get().setInterp(interpretation);
             logger.info("record found : {}", result);
             return result.get();
         }
@@ -149,7 +153,7 @@ public class NotificationPaging {
         cmsb.with(new SearchCriteria("deliveryTime", notificationEntity.getDeliveryTime(), SearchOperation.LIKE, Datatype.DATE));
         cmsb.with(new SearchCriteria("sendSmsInterface", notificationEntity.getSendSmsInterface(), SearchOperation.LIKE, Datatype.STRING));
         cmsb.with(new SearchCriteria("attachment", notificationEntity.getAttachment(), SearchOperation.LIKE, Datatype.STRING));
-         cmsb.with(new SearchCriteria("checkImeiId", notificationEntity.getCheckImeiId(), SearchOperation.LIKE, Datatype.INT));
+        cmsb.with(new SearchCriteria("checkImeiId", notificationEntity.getCheckImeiId(), SearchOperation.LIKE, Datatype.INT));
 
         return cmsb;
     }

@@ -21,12 +21,12 @@ public class WebActionDBEntity implements Serializable {
 
     @CreationTimestamp
     @Column(name = "created_on",columnDefinition = "DATE")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Date createdOn;
 
     @UpdateTimestamp
     @Column(name = "modified_on",columnDefinition = "DATE")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Date modifiedOn;
     @Column(name = "data")
     private String data;

@@ -21,12 +21,12 @@ public class EIRSListManagementEntity implements Serializable {
     private Long id;
 
     @CreationTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "created_on")
     private LocalDateTime createdOn;
 
     @UpdateTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "modified_on")
     private LocalDateTime modifiedOn;
 
@@ -69,7 +69,7 @@ public class EIRSListManagementEntity implements Serializable {
 
     @Column(name = "user_id")
     private String userId;
-    @Column(name = "quantity")
+    @Column(name = "total_count")
     private Integer quantity;
     @Column(name = "action")
     private String action;

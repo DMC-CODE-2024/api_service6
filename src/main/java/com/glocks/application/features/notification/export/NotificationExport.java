@@ -78,10 +78,6 @@ public class NotificationExport {
                             .setChannelType(data.getChannelType())
                             .setFeatureName(data.getFeatureName())
                             .setFeatureTxnId(data.getFeatureTxnId())
-                            .setLanguage(data.getMsgLang())
-                            .setSubject(data.getSubject())
-                            .setStatus(String.valueOf(data.getInterp()))
-                            .setNotificationSentTime(data.getNotificationSentTime().format(dtf))
                             .setMsisdn(data.getMsisdn())
                             .setEmail(data.getEmail());
                     fileRecords.add(fileModel);

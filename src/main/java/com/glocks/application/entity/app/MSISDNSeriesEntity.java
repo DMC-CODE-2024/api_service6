@@ -19,11 +19,11 @@ public class MSISDNSeriesEntity {
     private Long id;
 
     @CreationTimestamp
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime createdOn;
 
     @UpdateTimestamp
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime modifiedOn;
 
 

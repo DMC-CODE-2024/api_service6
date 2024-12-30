@@ -21,12 +21,12 @@ public class TRCQualifiedAgentsDataEntity implements Serializable {
     private Long id;
 
     @CreationTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "created_on")
     private LocalDateTime createdOn;
 
     @UpdateTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "modified_on")
     private LocalDateTime modifiedOn;
 
@@ -40,7 +40,7 @@ public class TRCQualifiedAgentsDataEntity implements Serializable {
     private String phoneNumber;
     @Column(name = "email")
     private String email;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "expiry_date")
     private String expiryDate;
     @Transient
