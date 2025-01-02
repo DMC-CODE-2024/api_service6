@@ -6,6 +6,7 @@ import com.glocks.application.entity.app.MSISDNSeriesEntity;
 import com.glocks.application.entity.app.NotificationEntity;
 import com.glocks.application.features.customercare.model.CustomerCareRequest;
 import com.glocks.application.features.customercare.model.CustomerCareResponse;
+import com.glocks.application.features.customercare.model.IMEIManualPairDTO;
 import com.glocks.application.repository.app.DuplicateDeviceDetailsRepository;
 import com.glocks.application.repository.app.IMEIManualPairRepository;
 import com.glocks.application.repository.app.NotificationRepository;
@@ -40,39 +41,56 @@ public class CustomerCareService {
 
         Optional<List<IMEIManualPair>> manualPairList = Optional.ofNullable(imeiManualPairRepository.findByRequestId(requestId));
 
-        logger.info("[ manualPairList " + manualPairList + "]");
-        List<IMEIManualPair> list = manualPairList.isPresent() ? manualPairList.get() : null;
-        IMEIManualPair imeiManualPair, imeiManualPair2, imeiManualPair3, imeiManualPair4;
-        List<IMEIManualPair> imeiManualPairList = new ArrayList<>();
-        for (IMEIManualPair i : list) {
-            if (Objects.nonNull(i.getImei1())) {
-                imeiManualPair = i;
-                imeiManualPair.setImei1(i.getImei1());
-                imeiManualPair.setMsisdn1(i.getMsisdn1());
-                imeiManualPairList.add(imeiManualPair);
-            }
-            if (Objects.nonNull(i.getImei2())) {
-                imeiManualPair2 = i;
-                imeiManualPair2.setImei1(i.getImei2());
-                imeiManualPair2.setMsisdn1(i.getMsisdn2());
-                imeiManualPairList.add(imeiManualPair2);
-            }
-            if (Objects.nonNull(i.getImei3())) {
-                imeiManualPair3 = i;
-                imeiManualPair3.setImei1(i.getImei3());
-                imeiManualPair3.setMsisdn1(i.getMsisdn3());
-                imeiManualPairList.add(imeiManualPair3);
-            }
-            if (Objects.nonNull(i.getImei4())) {
-                imeiManualPair4 = i;
-                imeiManualPair4.setImei1(i.getImei4());
-                imeiManualPair4.setMsisdn1(i.getMsisdn4());
-                imeiManualPairList.add(imeiManualPair4);
+        logger.info("[ response " + manualPairList + "]");
+        // List<IMEIManualPairDTO> list = manualPairList.isPresent() ? manualPairList.get() : null;
+        // IMEIManualPair imeiManualPair, imeiManualPair2, imeiManualPair3, imeiManualPair4;
+
+        List<IMEIManualPairDTO> list = new ArrayList<>();
+        if (manualPairList.isPresent()) {
+            for (IMEIManualPair i : manualPairList.get()) {
+                if (Objects.nonNull(i.getImei1())) {
+                    IMEIManualPairDTO imeiManualPair1=new IMEIManualPairDTO();
+                    imeiManualPair1.setCreatedOn(i.getCreatedOn());
+                    imeiManualPair1.setRequestId(i.getRequestId());
+                    imeiManualPair1.setRequestType(i.getRequestType());
+                    imeiManualPair1.setImei1(i.getImei1());
+                    imeiManualPair1.setMsisdn1(i.getMsisdn1());
+                    list.add(imeiManualPair1);
+                }
+
+                if (Objects.nonNull(i.getImei2())) {
+                    IMEIManualPairDTO imeiManualPair2=new IMEIManualPairDTO();
+                    imeiManualPair2.setCreatedOn(i.getCreatedOn());
+                    imeiManualPair2.setRequestId(i.getRequestId());
+                    imeiManualPair2.setRequestType(i.getRequestType());
+                    imeiManualPair2.setImei1(i.getImei2());
+                    imeiManualPair2.setMsisdn1(i.getMsisdn2());
+                    list.add(imeiManualPair2);
+                }
+
+                if (Objects.nonNull(i.getImei3())) {
+                    IMEIManualPairDTO imeiManualPair3=new IMEIManualPairDTO();
+                    imeiManualPair3.setCreatedOn(i.getCreatedOn());
+                    imeiManualPair3.setRequestId(i.getRequestId());
+                    imeiManualPair3.setRequestType(i.getRequestType());
+                    imeiManualPair3.setImei1(i.getImei3());
+                    imeiManualPair3.setMsisdn1(i.getMsisdn3());
+                    list.add(imeiManualPair3);
+                }
+
+                if (Objects.nonNull(i.getImei4())) {
+                    IMEIManualPairDTO imeiManualPair4=new IMEIManualPairDTO();
+                    imeiManualPair4.setCreatedOn(i.getCreatedOn());
+                    imeiManualPair4.setRequestId(i.getRequestId());
+                    imeiManualPair4.setRequestType(i.getRequestType());
+                    imeiManualPair4.setImei1(i.getImei4());
+                    imeiManualPair4.setMsisdn1(i.getMsisdn4());
+                    list.add(imeiManualPair4);
+                }
             }
         }
-        logger.info("imeiManualPairList {}", imeiManualPairList);
-        customerCareResponse.setRequestIdResponse(imeiManualPairList);
-
+        logger.info("imeiManualPairList {}", list);
+        customerCareResponse.setRequestIdResponse(list);
         return customerCareResponse;
     }
 
