@@ -107,8 +107,7 @@ public class EIRSListManagementPaging {
         cmsb.with(new SearchCriteria("tac", eirsListManagementEntity.getTac(), SearchOperation.LIKE, Datatype.STRING));
         cmsb.with(new SearchCriteria("category", eirsListManagementEntity.getCategory(), SearchOperation.LIKE, Datatype.STRING));
         cmsb.with(new SearchCriteria("remarks", eirsListManagementEntity.getRemarks(), SearchOperation.LIKE, Datatype.STRING));
-        cmsb.with(new SearchCriteria("quantity", eirsListManagementEntity.getQuantity(), SearchOperation.LIKE, Datatype.STRING));
-       // cmsb.with(new SearchCriteria("addedBy", eirsListManagementEntity.getAddedBy(), SearchOperation.LIKE, Datatype.STRING));
+        // cmsb.with(new SearchCriteria("addedBy", eirsListManagementEntity.getAddedBy(), SearchOperation.LIKE, Datatype.STRING));
         return cmsb;
     }
 

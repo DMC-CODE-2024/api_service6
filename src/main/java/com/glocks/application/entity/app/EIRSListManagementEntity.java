@@ -69,8 +69,9 @@ public class EIRSListManagementEntity implements Serializable {
 
     @Column(name = "user_id")
     private String userId;
-    @Column(name = "total_count")
-    private Integer quantity;
+
+    @Column(name = "total_count",updatable = false,insertable = false)
+    private Long quantity;
     @Column(name = "action")
     private String action;
     @Column(name = "request_type")
@@ -221,13 +222,12 @@ public class EIRSListManagementEntity implements Serializable {
         return this;
     }
 
-    public Integer getQuantity() {
+    public Long getQuantity() {
         return quantity;
     }
 
-    public EIRSListManagementEntity setQuantity(Integer quantity) {
+    public void setQuantity(Long quantity) {
         this.quantity = quantity;
-        return this;
     }
 
     public String getAction() {
