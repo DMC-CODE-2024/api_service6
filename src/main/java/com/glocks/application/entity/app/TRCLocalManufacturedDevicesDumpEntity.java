@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.glocks.application.features.trc.model.AuditTrailModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -19,12 +20,12 @@ public class TRCLocalManufacturedDevicesDumpEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Schema(hidden = true)
     @CreationTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "created_on")
     private LocalDateTime createdOn;
-
+    @Schema(hidden = true)
     @UpdateTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "modified_on")
@@ -44,7 +45,7 @@ public class TRCLocalManufacturedDevicesDumpEntity implements Serializable {
     @Column(name = "manufacturing_date")
     private String manufactureringDate;
     @Transient
-    @JsonProperty(value = "auditTrailModel", access = JsonProperty.Access.WRITE_ONLY)
+  //  @JsonProperty(value = "auditTrailModel", access = JsonProperty.Access.WRITE_ONLY)
     private AuditTrailModel auditTrailModel;
     public String getTac() {
         return tac;

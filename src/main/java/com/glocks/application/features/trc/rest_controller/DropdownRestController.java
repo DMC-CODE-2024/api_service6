@@ -4,6 +4,8 @@ import com.glocks.application.entity.app.MobileDeviceRepository;
 import com.glocks.application.entity.app.TRCDataManagementEntity;
 import com.glocks.application.entity.app.TRCTypeApprovedDataEntity;
 import com.glocks.application.features.trc.service.DistinctParamService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -26,18 +28,30 @@ public class DropdownRestController {
         this.distinctParamService = distinctParamService;
     }
 
+    @Tag(name = "Type Approval", description = "Type Approval Module API")
+    @Operation(
+            summary = "Fetch distinct value from the data source",
+            description = "Fetch distinct values for the type approval based on the received request")
     @PostMapping
     public ResponseEntity<?> distinct(@RequestBody List<String> param) {
         Class<TRCDataManagementEntity> entity = TRCDataManagementEntity.class;
         return new ResponseEntity<>(distinctParamService.distinct(param, entity), HttpStatus.OK);
     }
 
+    @Tag(name = "Type Approved", description = "Type Approval Module API")
+    @Operation(
+            summary = "Fetch distinct value from the data source",
+            description = "Fetch distinct values for the type approved based on the received request")
     @PostMapping("/ta-data")
     public ResponseEntity<?> distinctTADataDropdown(@RequestBody List<String> param) {
         Class<TRCTypeApprovedDataEntity> entity = TRCTypeApprovedDataEntity.class;
         return new ResponseEntity<>(distinctParamService.distinct(param, entity), HttpStatus.OK);
     }
 
+    @Tag(name = "Approve Device TAC", description = "Type Approval Module API")
+    @Operation(
+            summary = "Fetch distinct value from the data source",
+            description = "Fetch distinct values for the approve device tac based on the received request")
     @PostMapping("/approve-device-tac")
     public ResponseEntity<?> distinctApproveDeviceTACDropdown(@RequestBody List<String> param) {
         Class<MobileDeviceRepository> entity = MobileDeviceRepository.class;

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.glocks.application.features.trc.model.AuditTrailModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -20,12 +21,12 @@ public class BlockTACListEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
+    @Schema(hidden = true)
     @Column(name = "created_on")
     @CreationTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime createdOn;
-
+    @Schema(hidden = true)
     @Column(name = "modified_on")
     @UpdateTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
@@ -43,6 +44,8 @@ public class BlockTACListEntity implements Serializable {
 
     @Column(name = "txn_id")
     private String txnId;
+
+    @Schema(hidden = true)
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     @JsonProperty(value = "user", access = JsonProperty.Access.READ_ONLY)

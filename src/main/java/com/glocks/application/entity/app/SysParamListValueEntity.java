@@ -2,6 +2,7 @@ package com.glocks.application.entity.app;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ public class SysParamListValueEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-
+    @Schema(hidden = true)
     @Column(name = "created_on")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime createdOn;
@@ -30,7 +31,7 @@ public class SysParamListValueEntity {
 
     @Column(name = "list_order")
     private int listOrder;
-
+    @Schema(hidden = true)
     @Column(name = "modified_on")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime modifiedOn;

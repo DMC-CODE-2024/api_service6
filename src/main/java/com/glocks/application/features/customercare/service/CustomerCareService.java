@@ -1,19 +1,13 @@
 package com.glocks.application.features.customercare.service;
 
-import com.glocks.application.entity.app.DuplicateDeviceDetail;
 import com.glocks.application.entity.app.IMEIManualPair;
-import com.glocks.application.entity.app.MSISDNSeriesEntity;
-import com.glocks.application.entity.app.NotificationEntity;
 import com.glocks.application.features.customercare.model.CustomerCareRequest;
 import com.glocks.application.features.customercare.model.CustomerCareResponse;
 import com.glocks.application.features.customercare.model.IMEIManualPairDTO;
-import com.glocks.application.repository.app.DuplicateDeviceDetailsRepository;
 import com.glocks.application.repository.app.IMEIManualPairRepository;
 import com.glocks.application.repository.app.NotificationRepository;
-import com.glocks.application.repository.app.OperatorSeriesRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,12 +20,10 @@ public class CustomerCareService {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private IMEIManualPairRepository imeiManualPairRepository;
     private NotificationRepository notificationRepository;
-    private DuplicateDeviceDetailsRepository duplicateDeviceDetailsRepository;
 
-    public CustomerCareService(IMEIManualPairRepository imeiManualPairRepository, NotificationRepository notificationRepository, DuplicateDeviceDetailsRepository duplicateDeviceDetailsRepository) {
+    public CustomerCareService(IMEIManualPairRepository imeiManualPairRepository, NotificationRepository notificationRepository) {
         this.imeiManualPairRepository = imeiManualPairRepository;
         this.notificationRepository = notificationRepository;
-        this.duplicateDeviceDetailsRepository = duplicateDeviceDetailsRepository;
     }
 
 

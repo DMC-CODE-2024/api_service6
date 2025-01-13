@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.glocks.application.features.trc.model.AuditTrailModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -47,9 +49,9 @@ public class ExceptionListEntity implements Serializable {
     @Column(name = "txn_id")
     private String txnId;
 
-/*    @Column(name = "user_id")
-    private String userId;*/
-
+    /*    @Column(name = "user_id")
+        private String userId;*/
+    @Schema(hidden = true)
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     @JsonProperty(value = "user", access = JsonProperty.Access.READ_ONLY)

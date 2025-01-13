@@ -2,6 +2,7 @@ package com.glocks.application.entity.app;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,7 +24,7 @@ public class User {
 
     private String username;
 
-
+    @Schema(hidden = true)
     @CreationTimestamp
     private Date createdOn;
 

@@ -3,6 +3,7 @@ package com.glocks.application.entity.app;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.glocks.application.features.trc.model.AuditTrailModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -20,12 +21,12 @@ public class NotificationEntity {
 
     @Column(name = "channel_type")
     private String channelType;
-
+    @Schema(hidden = true)
     @Column(name = "created_on")
     @CreationTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime createdOn;
-
+    @Schema(hidden = true)
     @Column(name = "modified_on")
     @UpdateTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")

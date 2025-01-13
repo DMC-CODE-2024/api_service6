@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.glocks.application.features.trc.model.AuditTrailModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -21,11 +22,13 @@ public class BlockListEntity implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @Schema(hidden = true)
     @Column(name = "created_on")
     @CreationTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime createdOn;
 
+    @Schema(hidden = true)
     @Column(name = "modified_on")
     @UpdateTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
@@ -49,7 +52,7 @@ public class BlockListEntity implements Serializable {
 
 /*    @Column(name = "user_id")
     private String userId;*/
-
+@Schema(hidden = true)
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     @JsonProperty(value = "user", access = JsonProperty.Access.READ_ONLY)
@@ -78,7 +81,7 @@ public class BlockListEntity implements Serializable {
     @Transient
     private String uploadedBy;
     @Transient
-    @JsonProperty(value = "auditTrailModel", access = JsonProperty.Access.WRITE_ONLY)
+  //  @JsonProperty(value = "auditTrailModel", access = JsonProperty.Access.WRITE_ONLY)
     private AuditTrailModel auditTrailModel;
 
     public AuditTrailModel getAuditTrailModel() {

@@ -1,5 +1,6 @@
 package com.glocks.application.entity.app;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -14,7 +15,7 @@ public class IMEIManualPair {
 
     @Column(name = "contact_number_otp")
     private String contactNumberOtp;
-
+    @Schema(hidden = true)
     @Column(name = "created_on")
     private LocalDateTime createdOn;
 

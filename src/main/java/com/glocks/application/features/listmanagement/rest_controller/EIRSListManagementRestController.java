@@ -5,6 +5,12 @@ import com.glocks.application.entity.app.EIRSListManagementEntity;
 import com.glocks.application.features.listmanagement.service.EIRSListManagementExportService;
 import com.glocks.application.features.listmanagement.service.EIRSListManagementPagingService;
 import com.glocks.application.features.listmanagement.service.FileUploadService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,6 +32,10 @@ public class EIRSListManagementRestController {
         this.eirsListManagementExport = eirsListManagementExport;
     }
 
+    @Tag(name = "List Management", description = "List Management Module API")
+    @Operation(
+            summary = "Save list management record",
+            description = "Save list management data into the data source")
     @PostMapping("/upload")
     public ResponseModel fileUpload(@Valid @RequestBody EIRSListManagementEntity eirsListManagementEntity) {
         logger.info("EIRSListManagementEntity payload for file upload [" + eirsListManagementEntity + "]");
@@ -33,18 +43,30 @@ public class EIRSListManagementRestController {
 
     }
 
-
+    @Tag(name = "List Management", description = "List Management Module API")
+    @Operation(
+            summary = "Fetch all record based on requestType",
+            description = "Fetches all list management entities and their data from data source  based on requestType(EXCEPTION_LIST/BLOCK_LIST/BLOCK_TAC) ")
     @PostMapping("/paging")
-    public MappingJacksonValue paging(@RequestBody EIRSListManagementEntity eirsListManagementEntity, @RequestParam(value = "pageNo", defaultValue = "0") int pageNo, @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+    public MappingJacksonValue paging(
+            @RequestBody EIRSListManagementEntity eirsListManagementEntity, @RequestParam(value = "pageNo", defaultValue = "0") int pageNo, @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
         logger.info("EIRSListManagementEntity payload for paging [" + eirsListManagementEntity + "]");
         return eirsListManagementPagingService.paging(eirsListManagementEntity, pageNo, pageSize);
     }
 
+    @Tag(name = "List Management", description = "List Management Module API")
+    @Operation(
+            summary = "Fetch single record based on Id",
+            description = "Fetches record based on Id from data source")
     @PostMapping
     public MappingJacksonValue findByID(@RequestBody EIRSListManagementEntity eirsListManagementEntity) {
         return new MappingJacksonValue(eirsListManagementPagingService.find(eirsListManagementEntity));
     }
 
+    @Tag(name = "List Management", description = "List Management Module API")
+    @Operation(
+            summary = "Export csv file",
+            description = "Fetches all list management entities and their associated data from the data source, with the number of records limited to a configurable parameter, up to a maximum of 50,000. Subsequently, generate a .csv file containing the retrieved data.")
     @PostMapping("/export")
     public MappingJacksonValue export(@RequestBody EIRSListManagementEntity eirsListManagementEntity) {
         logger.info("EIRSListManagementEntity payload for export [" + eirsListManagementEntity + "]");

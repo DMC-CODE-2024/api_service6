@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.glocks.application.features.trc.model.AuditTrailModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -22,12 +23,12 @@ public class TRCDataManagementEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Schema(hidden = true)
     @CreationTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "created_on")
     private LocalDateTime createdOn;
-
+    @Schema(hidden = true)
     @UpdateTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "modified_on")
@@ -40,7 +41,7 @@ public class TRCDataManagementEntity implements Serializable {
 
     @Column(name = "transaction_id")
     private String transactionId;
-
+    @Schema(hidden = true)
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id" ,insertable = false, updatable = false)
     @JsonProperty(value = "user", access = JsonProperty.Access.READ_ONLY)
@@ -58,7 +59,7 @@ public class TRCDataManagementEntity implements Serializable {
     private String remarks;
 
     @Transient
-    @JsonProperty(value = "auditTrailModel", access = JsonProperty.Access.WRITE_ONLY)
+   // @JsonProperty(value = "auditTrailModel", access = JsonProperty.Access.WRITE_ONLY)
     private AuditTrailModel auditTrailModel;
 
     public Long getId() {

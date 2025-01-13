@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.glocks.application.features.trc.model.AuditTrailModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -20,14 +22,16 @@ public class EIRSListManagementEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Schema(hidden = true)
     @CreationTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
-    @Column(name = "created_on")
+    @Column(name = "created_on", insertable = false, updatable = false)
     private LocalDateTime createdOn;
 
+    @Schema(hidden = true)
     @UpdateTimestamp
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
-    @Column(name = "modified_on")
+    @Column(name = "modified_on", insertable = false, updatable = true)
     private LocalDateTime modifiedOn;
 
     @Column(name = "msisdn")
@@ -62,6 +66,7 @@ public class EIRSListManagementEntity implements Serializable {
     @Column(name = "transaction_id")
     private String transactionId;
 
+    @Schema(hidden = true)
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     @JsonProperty(value = "user", access = JsonProperty.Access.READ_ONLY)
@@ -70,7 +75,7 @@ public class EIRSListManagementEntity implements Serializable {
     @Column(name = "user_id")
     private String userId;
 
-    @Column(name = "total_count",updatable = false,insertable = false)
+    @Column(name = "total_count", updatable = false, insertable = false)
     private Long quantity;
     @Column(name = "action")
     private String action;
@@ -82,8 +87,10 @@ public class EIRSListManagementEntity implements Serializable {
 
     @Transient
     private String uploadedBy;
+
+
     @Transient
-    @JsonProperty(value = "auditTrailModel", access = JsonProperty.Access.WRITE_ONLY)
+   // @JsonProperty(value = "auditTrailModel", access = JsonProperty.Access.WRITE_ONLY,required = true)
     private AuditTrailModel auditTrailModel;
 
     public String getUploadedBy() {
@@ -94,15 +101,6 @@ public class EIRSListManagementEntity implements Serializable {
         this.uploadedBy = uploadedBy;
         return this;
     }
-
-/*    public String getAddedBy() {
-        return addedBy;
-    }
-
-    public EIRSListManagementEntity setAddedBy(String addedBy) {
-        this.addedBy = addedBy;
-        return this;
-    }*/
 
     public Long getId() {
         return id;
