@@ -59,7 +59,7 @@ public class TRCDataManagementEntity implements Serializable {
     private String remarks;
 
     @Transient
-   // @JsonProperty(value = "auditTrailModel", access = JsonProperty.Access.WRITE_ONLY)
+    // @JsonProperty(value = "auditTrailModel", access = JsonProperty.Access.WRITE_ONLY)
     private AuditTrailModel auditTrailModel;
 
     public Long getId() {

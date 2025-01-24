@@ -5,16 +5,15 @@ import com.glocks.application.common.features.audit_trail.AuditTrailService;
 import com.glocks.application.common.model.FileDetails;
 import com.glocks.application.common.model.ResponseModel;
 import com.glocks.application.entity.app.EIRSListManagementEntity;
-import com.glocks.application.entity.app.TRCDataManagementEntity;
 import com.glocks.application.features.listmanagement.export.EIRSListManagementExport;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Service;
 
-import  jakarta.persistence.EntityManager;
-import  jakarta.persistence.PersistenceContext;
 import java.util.Optional;
 
 @Service
