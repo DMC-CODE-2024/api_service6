@@ -10,8 +10,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.glocks</groupId>
-    <artifactId>application</artifactId>
+    <groupId>app</groupId>
+    <artifactId>apiservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>apiservice6</name>
     <description>APIService6 code</description>
