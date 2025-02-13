@@ -2,11 +2,15 @@ package app.apiservice.features.trc.csv_file_model;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvDate;
+
+import java.time.LocalDateTime;
 
 public class LMDataFileModel {
     @CsvBindByName(column = "Uploaded Date")
     @CsvBindByPosition(position = 0)
-    private String uploadedDate;
+    @CsvDate(value = "dd/MM/yyyy HH:mm")
+    private LocalDateTime uploadedDate;
     @CsvBindByName(column = "Serial Number")
     @CsvBindByPosition(position = 1)
     private String serialNumber;
@@ -21,11 +25,11 @@ public class LMDataFileModel {
     @CsvBindByPosition(position = 4)
     private String manufactureName;
 
-    public String getUploadedDate() {
+    public LocalDateTime getUploadedDate() {
         return uploadedDate;
     }
 
-    public LMDataFileModel setUploadedDate(String uploadedDate) {
+    public LMDataFileModel setUploadedDate(LocalDateTime uploadedDate) {
         this.uploadedDate = uploadedDate;
         return this;
     }

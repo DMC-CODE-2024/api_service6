@@ -1,8 +1,10 @@
 package app.apiservice.entity.app;
 
+import app.apiservice.common.LocalDateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import app.apiservice.features.trc.model.AuditTrailModel;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -21,12 +23,12 @@ public class TRCQualifiedAgentsDataEntity implements Serializable {
     private Long id;
     @Schema(hidden = true)
     @CreationTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     @Column(name = "created_on")
     private LocalDateTime createdOn;
     @Schema(hidden = true)
     @UpdateTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     @Column(name = "modified_on")
     private LocalDateTime modifiedOn;
 
@@ -41,7 +43,7 @@ public class TRCQualifiedAgentsDataEntity implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    //@JsonSerialize(using = LocalDateTimeSerializer.class)
     @Column(name = "expiry_date")
     private String expiryDate;
     @Transient

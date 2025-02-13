@@ -19,16 +19,16 @@ public class MobileDeviceRepository {
     private Integer id;
     @Schema(hidden = true)
     @CreationTimestamp
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     @Column(name = "created_on", columnDefinition = "timestamp DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdOn;
     @Schema(hidden = true)
     @UpdateTimestamp
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     @Column(name = "modified_on", columnDefinition = "timestamp DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime modifiedOn;
     @Column(name = "launch_date")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime launchDate;
     @Column(name = "model_name")
     private String modelName;

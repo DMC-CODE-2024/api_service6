@@ -18,12 +18,12 @@ public class PoliceStationEntity {
     @Schema(hidden = true)
     @Column(name = "created_on")
     @CreationTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime createdOn;
     @Schema(hidden = true)
     @Column(name = "modified_on")
     @UpdateTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime modifiedOn;
     @Column(name = "commune_id")
     private Integer communeId;

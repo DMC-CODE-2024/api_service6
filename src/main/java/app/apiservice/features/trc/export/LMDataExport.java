@@ -68,7 +68,7 @@ public class LMDataExport {
             if (!list.isEmpty()) {
                 fileRecords = new ArrayList<LMDataFileModel>();
                 for (TRCLocalManufacturedDevicesDumpEntity data : list) {
-                    fileModel = new LMDataFileModel().setUploadedDate(data.getCreatedOn().format(dtf)).setSerialNumber(data.getSerialNumber()).setImei(data.getActualImei()).setManufactureID(data.getManufacturerId()).setManufactureName(data.getManufacturerName());
+                    fileModel = new LMDataFileModel().setUploadedDate(data.getCreatedOn()).setSerialNumber(data.getSerialNumber()).setImei(data.getActualImei()).setManufactureID(data.getManufacturerId()).setManufactureName(data.getManufacturerName());
                     fileRecords.add(fileModel);
                 }
                 logger.info("Exported data : [" + fileRecords + "]");

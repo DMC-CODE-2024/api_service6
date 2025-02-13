@@ -50,7 +50,7 @@ public class TypeApprovedExport {
 
         TypeApproveFileModel fileModel = null;
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
 
         SystemConfigurationDb filepath = configurationManagementServiceImpl.findByTag(ConfigTags.file_download_dir);
@@ -76,7 +76,7 @@ public class TypeApprovedExport {
                 fileRecords = new ArrayList<TypeApproveFileModel>();
                 for (TRCDataManagementEntity data : list) {
                     fileModel = new TypeApproveFileModel();
-                    fileModel.setCreatedOn(data.getCreatedOn().format(dtf));
+                    fileModel.setCreatedOn(data.getCreatedOn());
                     fileModel.setFileName(data.getFileName());
                     fileModel.setTransactionId(data.getTransactionId());
                     fileModel.setStatus(data.getStatus());

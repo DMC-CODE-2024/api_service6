@@ -1,13 +1,16 @@
 package app.apiservice.entity.app;
 
+import app.apiservice.common.LocalDateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import app.apiservice.features.trc.model.AuditTrailModel;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -21,12 +24,12 @@ public class TRCTypeApprovedDataEntity implements Serializable {
     private Long id;
     @Schema(hidden = true)
     @CreationTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     @Column(name = "created_on")
     private LocalDateTime createdOn;
     @Schema(hidden = true)
     @UpdateTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     @Column(name = "modified_on")
     private LocalDateTime modifiedOn;
     @Column(name = "no")
@@ -53,11 +56,12 @@ public class TRCTypeApprovedDataEntity implements Serializable {
     @Column(name = "country_of_manufacture")
     private String country;
 
+    //@JsonSerialize(using = LocalDateTimeSerializer.class)
     @Column(name = "approved_date")
     private String approvalDate;
 
     @Transient
- //   @JsonProperty(value = "auditTrailModel", access = JsonProperty.Access.WRITE_ONLY)
+    //   @JsonProperty(value = "auditTrailModel", access = JsonProperty.Access.WRITE_ONLY)
     private AuditTrailModel auditTrailModel;
 
 

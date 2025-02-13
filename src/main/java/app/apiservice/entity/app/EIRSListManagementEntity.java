@@ -24,13 +24,13 @@ public class EIRSListManagementEntity implements Serializable {
 
     @Schema(hidden = true)
     @CreationTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     @Column(name = "created_on", insertable = false, updatable = false)
     private LocalDateTime createdOn;
 
     @Schema(hidden = true)
     @UpdateTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     @Column(name = "modified_on", insertable = false, updatable = true)
     private LocalDateTime modifiedOn;
 

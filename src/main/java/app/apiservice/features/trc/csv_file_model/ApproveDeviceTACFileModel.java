@@ -2,6 +2,9 @@ package app.apiservice.features.trc.csv_file_model;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvDate;
+
+import java.time.LocalDateTime;
 
 public class ApproveDeviceTACFileModel {
     @CsvBindByName(column = "Model Name")
@@ -20,7 +23,8 @@ public class ApproveDeviceTACFileModel {
 
     @CsvBindByName(column = "Launch Date")
     @CsvBindByPosition(position = 4)
-    private String launchDate;
+    @CsvDate(value = "dd/MM/yyyy HH:mm")
+    private LocalDateTime launchDate;
     @CsvBindByName(column = "Device Type")
     @CsvBindByPosition(position = 5)
     private String deviceType;
@@ -55,20 +59,20 @@ public class ApproveDeviceTACFileModel {
         this.manufacturingLocation = manufacturingLocation;
     }
 
+    public LocalDateTime getLaunchDate() {
+        return launchDate;
+    }
+
+    public void setLaunchDate(LocalDateTime launchDate) {
+        this.launchDate = launchDate;
+    }
+
     public String getOs() {
         return os;
     }
 
     public void setOs(String os) {
         this.os = os;
-    }
-
-    public String getLaunchDate() {
-        return launchDate;
-    }
-
-    public void setLaunchDate(String launchDate) {
-        this.launchDate = launchDate;
     }
 
     public String getDeviceType() {

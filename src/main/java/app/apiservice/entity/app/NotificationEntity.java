@@ -24,12 +24,12 @@ public class NotificationEntity {
     @Schema(hidden = true)
     @Column(name = "created_on")
     @CreationTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime createdOn;
     @Schema(hidden = true)
     @Column(name = "modified_on")
     @UpdateTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime modifiedOn;
 
     @Column(name = "feature_id")
@@ -73,7 +73,7 @@ public class NotificationEntity {
     private Integer userId;
 
     @Column(name = "notification_sent_time")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime notificationSentTime;
 
     @Column(name = "operator_name")

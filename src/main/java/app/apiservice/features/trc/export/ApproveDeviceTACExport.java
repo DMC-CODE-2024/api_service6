@@ -80,9 +80,9 @@ public class ApproveDeviceTACExport {
                     fileModel.setManufacturingLocation(data.getManufacturingLocation());
                     fileModel.setOs(data.getOs());
                     if (Objects.nonNull(data.getLaunchDate())) {
-                        fileModel.setLaunchDate(data.getLaunchDate().format(dtf));
+                        fileModel.setLaunchDate(data.getLaunchDate());
                     } else {
-                        fileModel.setLaunchDate("");
+                        fileModel.setLaunchDate(null);
                     }
                     fileModel.setDeviceType(data.getDeviceType());
                     fileModel.setSimSlot(data.getSimSlot());

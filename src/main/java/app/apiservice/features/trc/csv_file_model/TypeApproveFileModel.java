@@ -2,11 +2,15 @@ package app.apiservice.features.trc.csv_file_model;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvDate;
+
+import java.time.LocalDateTime;
 
 public class TypeApproveFileModel {
     @CsvBindByName(column = "Updated Date")
     @CsvBindByPosition(position = 0)
-    private String createdOn;
+    @CsvDate(value = "dd/MM/yyyy HH:mm")
+    private LocalDateTime createdOn;
     @CsvBindByName(column = "File Name")
     @CsvBindByPosition(position = 1)
     private String fileName;
@@ -38,12 +42,13 @@ public class TypeApproveFileModel {
         return this;
     }
 
-    public String getCreatedOn() {
+    public LocalDateTime getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(String createdOn) {
+    public TypeApproveFileModel setCreatedOn(LocalDateTime createdOn) {
         this.createdOn = createdOn;
+        return this;
     }
 
     public String getFileName() {

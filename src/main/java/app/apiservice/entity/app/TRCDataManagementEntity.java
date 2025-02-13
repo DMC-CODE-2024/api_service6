@@ -24,12 +24,12 @@ public class TRCDataManagementEntity implements Serializable {
     private Long id;
     @Schema(hidden = true)
     @CreationTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     @Column(name = "created_on")
     private LocalDateTime createdOn;
     @Schema(hidden = true)
     @UpdateTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     @Column(name = "modified_on")
     private LocalDateTime modifiedOn;
     @Column(name = "file_name")

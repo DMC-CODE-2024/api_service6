@@ -5,14 +5,26 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class LocalDateTimeSerializer extends JsonSerializer<LocalDateTime> {
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+public class LocalDateTimeSerializer extends JsonSerializer<String> {
+    private static final DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private static final DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     @Override
-    public void serialize(LocalDateTime value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-        gen.writeString(value.format(formatter));
+    public void serialize(String value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+        if (value != null) {
+            try {
+                LocalDate date = LocalDate.parse(value, inputFormatter);
+                String formattedDate = date.format(outputFormatter);
+                gen.writeString(formattedDate);
+            } catch (Exception e) {
+                gen.writeString(value);
+            }
+        } else {
+            gen.writeNull();
+        }
     }
 }

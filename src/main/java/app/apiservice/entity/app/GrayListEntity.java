@@ -24,19 +24,19 @@ public class GrayListEntity implements Serializable {
     @Schema(hidden = true)
     @Column(name = "created_on")
     @CreationTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime createdOn;
     @Schema(hidden = true)
     @Column(name = "modified_on")
     @UpdateTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime modifiedOn;
 
     @Column(name = "complaint_type")
     private String complaintType;
 
     @Column(name = "expiry_date")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime expiryDate;
     @Column(name = "imei")
     private String imei;
